@@ -13,9 +13,11 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     static int AccountNo = 0;
     static Boolean Repeat = false;
+    static Boolean Tasks = false;
 
 
     public static void main(String[] args) {
+    do{
     System.out.println("Please select either 1, 2 or 3:");
     System.out.println("1. Create account");
     System.out.println("2. List Accounts");
@@ -87,7 +89,7 @@ public class Main {
                         System.out.println("How much do you wish to deposit?: ");
                         float DepositAmount = input.nextFloat() ;
                         input.nextLine();
-                        DepositCheck=true;
+                        DepositCheck=false;
                         break;
                     case 2:
                         DepositCheck=false;
@@ -126,8 +128,11 @@ public class Main {
         }
         makeAccount();
         System.out.println("Your account has been created.");
-        System.out.println(Account.getAccountDetails(AccountNo));
-        boolean OverdraftCheck = false;
+        System.out.println("Your account number is "+Account.getAccountDetails(AccountNo));
+        System.out.println("Returning to initial options.");
+    } while (Tasks==false);
+
+        /*boolean OverdraftCheck = false;
         do{
         System.out.println("Would you like to make an overdraft?");
         System.out.println("1. Yes ");
@@ -145,7 +150,7 @@ public class Main {
                    System.exit(0);
                    break;
             }
-        }while (OverdraftCheck == false);
+        }while (OverdraftCheck == false); */
 
         }
     public static void makeAccount(){

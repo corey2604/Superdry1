@@ -7,7 +7,7 @@
     <ignored path="BankExercise.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1443690053707" ignored="false" />
-    <file path="/Main.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1443705632577" ignored="false" />
+    <file path="/Main.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1443706204724" ignored="false" />
     <file path="/Account.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1443704626064" ignored="false" />
     <file path="/AccountType.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1443698993019" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +25,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="126" class="Main" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="128" class="Main" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -86,7 +86,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="64" selection-start="327" selection-end="327" vertical-scroll-proportion="-4.579661">
+            <state line="98" column="76" selection-start="3889" selection-end="3889" vertical-scroll-proportion="-0.84745765">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -375,7 +375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="64" selection-start="327" selection-end="327" vertical-scroll-proportion="-4.579661">
+        <state line="98" column="76" selection-start="3889" selection-end="3889" vertical-scroll-proportion="-0.84745765">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
