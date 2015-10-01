@@ -28,8 +28,8 @@ public class Account {
         this.InitialSavings=InitialSavings;
     }
 
-    public static int getAccountDetails(int AccountNo){
-        return AccountNo;
+    public static String getAccountDetails(int AccountNo, String FirstName, String Surname, AccountType AccountT, float InitialSavings){
+        return AccountNo+" "+FirstName+" "+Surname+" "+AccountT+" "+InitialSavings;
     }
    /* public void getWithdrawal(int WithdrawalAmount) throws Exception
         if(Withdrawal>=) */

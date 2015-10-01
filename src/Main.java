@@ -2,6 +2,7 @@ import com.sun.org.apache.xerces.internal.impl.xs.models.XSCMRepeatingLeaf;
 
 import javax.security.auth.login.AccountNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.*;
 public class Main {
 
@@ -14,14 +15,16 @@ public class Main {
     static int AccountNo = 0;
     static Boolean Repeat = false;
     static Boolean Tasks = false;
+    static ArrayList <Account> Accounts = new ArrayList<Account>();
 
 
     public static void main(String[] args) {
     do{
-    System.out.println("Please select either 1, 2 or 3:");
+    System.out.println("Please select either 1, 2, 3 or 4:");
     System.out.println("1. Create account");
     System.out.println("2. List Accounts");
-    System.out.println("3. Exit");
+    System.out.println("3. Deposit/Withdraw");
+    System.out.println("4. Exit");
     System.out.println();
         int choice = input.nextInt();
         input.nextLine();
@@ -31,7 +34,7 @@ public class Main {
                 boolean FirstCheck = false;
                 do{
             System.out.print("Please enter First Name: ");
-            String FirstName = input.nextLine();
+            FirstName = input.nextLine();
                     if (FirstName.length()>0){
                         FirstCheck=true;
                     }
@@ -39,7 +42,7 @@ public class Main {
                 boolean LastCheck = false;
                 do{
             System.out.print("Please enter Last Name: ");
-            String LastName = input.nextLine();
+            LastName = input.nextLine();
                     if (LastName.length()>0){
                         LastCheck=true;
                     }
@@ -99,6 +102,8 @@ public class Main {
                         break;
                     }
                 }while (DepositCheck==true);
+            makeAccount();
+            System.out.println("Your account has been created.");
             System.out.println("Would you like to create a new account?: ");
             System.out.println("1. Yes");
             System.out.println("2. No");
@@ -119,20 +124,25 @@ public class Main {
 
 
             case 2:
-            System.exit(0);
+            for(Account values : Accounts){
+                System.out.println("Account number: "+values.AccountNo+" First Name: "+values.FirstName+ "Surname: "+values.Surname+" Account:"+values.AccountT);
+                System.out.println();
+            }
+                break;
+
+            case 3:
+                System.exit(0);
                 break;
 
             default:
             System.out.println("Invalid option. Please enter 1 or 2.");
                 break;
         }
-        makeAccount();
-        System.out.println("Your account has been created.");
-        System.out.println("Your account number is "+Account.getAccountDetails(AccountNo));
+         //System.out.println("Your account number is " + Account.getAccountDetails(AccountNo));
         System.out.println("Returning to initial options.");
     } while (Tasks==false);
 
-        /*boolean OverdraftCheck = false;
+        boolean OverdraftCheck = false;
         do{
         System.out.println("Would you like to make an overdraft?");
         System.out.println("1. Yes ");
@@ -150,11 +160,12 @@ public class Main {
                    System.exit(0);
                    break;
             }
-        }while (OverdraftCheck == false); */
+        }while (OverdraftCheck == false);
 
         }
     public static void makeAccount(){
     Account UserAccount = new Account(AccountNo, FirstName, LastName, AccountText, DepositAmount);
+    Accounts.add(UserAccount);
     }
 
 
