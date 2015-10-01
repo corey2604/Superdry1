@@ -72,7 +72,7 @@ public class Main {
                 default:
                     System.out.println("Invalid option.");
                     break;
-            }
+                }
             }  while (AccountCheck==false);
                 boolean DepositCheck=false;
                 do {
@@ -113,6 +113,7 @@ public class Main {
                     break;
             }
         } while (Repeat==true);
+                break;
 
 
             case 2:
