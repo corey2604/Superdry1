@@ -104,12 +104,16 @@
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state line="137" column="0" selection-start="6612" selection-end="6612" vertical-scroll-proportion="0.33333334">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#448#457#0" expanded="true" />
 =======
             <state line="111" column="157" selection-start="4442" selection-end="4442" vertical-scroll-proportion="0.24749164">
+=======
+            <state line="124" column="151" selection-start="4821" selection-end="4821" vertical-scroll-proportion="0.3478261">
+>>>>>>> bacdfb2b3d050ffa80ca9e912b6507ca1047b510
               <folding>
                 <element signature="imports" expanded="true" />
 >>>>>>> a3b2170442bcecc83b422bdcdaf96de7ae2f49e4
@@ -483,12 +487,16 @@
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state line="137" column="0" selection-start="6612" selection-end="6612" vertical-scroll-proportion="0.33333334">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#448#457#0" expanded="true" />
 =======
         <state line="111" column="157" selection-start="4442" selection-end="4442" vertical-scroll-proportion="0.24749164">
+=======
+        <state line="124" column="151" selection-start="4821" selection-end="4821" vertical-scroll-proportion="0.3478261">
+>>>>>>> bacdfb2b3d050ffa80ca9e912b6507ca1047b510
           <folding>
             <element signature="imports" expanded="true" />
 >>>>>>> a3b2170442bcecc83b422bdcdaf96de7ae2f49e4
