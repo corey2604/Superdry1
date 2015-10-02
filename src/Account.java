@@ -12,7 +12,7 @@ public class Account {
     String FirstName;
     String Surname;
     AccountType AccountT;
-    static float InitialSavings;
+    float Savings;
 
     public Account (int AccountNo, String FirstName,String Surname, AccountType AccountT){
         this.AccountNo=AccountNo;
@@ -20,26 +20,28 @@ public class Account {
         this.Surname=Surname;
         this.AccountT=AccountT;
     }
-    public Account (int AccountNo, String FirstName,String Surname, AccountType AccountT, float InitialSavings){
+    public Account (int AccountNo, String FirstName,String Surname, AccountType AccountT, float Savings){
         this.AccountNo=AccountNo;
         this.FirstName=FirstName;
         this.Surname=Surname;
         this.AccountT=AccountT;
-        this.InitialSavings=InitialSavings;
+        this.Savings=Savings;
     }
 
-    public static String getAccountDetails(int AccountNo, String FirstName, String Surname, AccountType AccountT, float InitialSavings){
-        return AccountNo+" "+FirstName+" "+Surname+" "+AccountT+" "+InitialSavings;
+    public static String getAccountDetails(int AccountNo, String FirstName, String Surname, AccountType AccountT, float Savings){
+        return AccountNo+" "+FirstName+" "+Surname+" "+AccountT+" "+Savings;
     }
 
-    public static void updateSavings(float Deposit){
-        InitialSavings=Deposit;
+    public void updateSavings(float Deposit){
+        Savings=Deposit;
     }
 
-    public static float getSavings (int AccountNo){
-        return InitialSavings;
+    public float getSavings (){
+       return Savings;
     }
-   /* public void getWithdrawal(int WithdrawalAmount) throws Exception
+
+    /*public void getWithdrawal(int WithdrawalAmount) throws Exception
         if(Withdrawal>=) */
 
    }
+
