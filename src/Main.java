@@ -1,9 +1,5 @@
-import com.sun.org.apache.xerces.internal.impl.xs.models.XSCMRepeatingLeaf;
-
-import javax.security.auth.login.AccountNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.*;
 public class Main {
 
     static String FirstName;
@@ -16,7 +12,6 @@ public class Main {
     static Boolean Repeat = false;
     static Boolean Tasks = false;
     static ArrayList <Account> Accounts = new ArrayList<Account>();
-
 
     public static void main(String[] args) {
     do{
@@ -96,6 +91,7 @@ public class Main {
                         DepositCheck=false;
                         break;
                     case 2:
+                        DepositAmount = 0;
                         DepositCheck=false;
                         break;
                     default:
@@ -126,7 +122,7 @@ public class Main {
 
             case 2:
             for(Account values : Accounts){
-                System.out.println("<"+values.AccountNo+"> ("+values.AccountT+ " account) <"+values.FirstName+"> <:"+values.Surname+">");
+                System.out.println("<"+values.AccountNo+"> ("+values.AccountT+ " account) "+values.FirstName+" "+values.Surname+": £"+values.InitialSavings);
                 System.out.println();
             }
                 break;
@@ -139,8 +135,26 @@ public class Main {
                 input.nextLine();
             if (AccountNo<=Accounts.size()){
                System.out.print("Valid entry. Using account.");
-                for (int i=0; i>=Accounts.size(); i++){
-
+                for (Account i : Accounts){
+                   if (i.AccountNo == AccountNo){
+                       System.out.println("Please select an option:");
+                       System.out.println("1. Deposit");
+                       System.out.println("2. Withdraw");
+                       int DWChoice=input.nextInt();
+                       input.nextLine();
+                       switch (DWChoice){
+                           case 1:
+                               System.out.println("How much do you wish to deposit?");
+                               float DepInput=input.nextFloat();
+                               input.nextLine();
+                               float FinalAmount=DepositAmount+DepInput;
+                               Account.updateSavings(FinalAmount);
+                               System.out.println("Your balance is now:"+Account.getSavings(AccountNo));
+                               break;
+                           case 2:
+                               break;
+                       }
+                   }
                 }
 
                AccountNoCheck=true;
@@ -148,28 +162,9 @@ public class Main {
                 else{
                 System.out.print("Invalid Entry.");
              }
-            }while(AccountNoCheck==false);
+             }while(AccountNoCheck==false);
 
-            System.out.println("Please select an option:");
-            System.out.println("1. Deposit");
-            System.out.println("2. Withdraw");
-             int DWChoice=input.nextInt();
-                input.nextLine();
-                switch (DWChoice){
-                    case 1:
-                        System.out.println("How much do you wish to deposit?");
-                        float DepInput=input.nextFloat();
-                        input.nextLine();
-                        float FinalAmount=DepositAmount+DepInput;
-                        Account.updateSavings(FinalAmount);
-                        System.out.println("Your balance is now:"+Account.getSavings(AccountNo));
-                        break;
-
-                    case 2:
-                        break;
-                }
-
-            case 4:
+             case 4:
                 System.exit(0);
                 break;
 
