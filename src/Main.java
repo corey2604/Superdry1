@@ -125,17 +125,51 @@ public class Main {
 
             case 2:
             for(Account values : Accounts){
-                System.out.println("Account number: "+values.AccountNo+" First Name: "+values.FirstName+ "Surname: "+values.Surname+" Account:"+values.AccountT);
+                System.out.println("Account number: "+values.AccountNo);
+                System.out.println("");
                 System.out.println();
             }
                 break;
 
             case 3:
+                System.out.println("Please enter your account number");
+                int search = input.nextInt();
+                input.nextLine();
+
+                // TODO: only work on account searched for
+
+                for(Account account : Accounts)
+                {
+                    System.out.println("Please select either 1 or 2");
+                    System.out.println("1. Deposit");
+                    System.out.println("2. Withdraw");
+                    int choice2 = input.nextInt();
+                    input.nextLine();
+                    switch (choice2) {
+                        case 1:
+                            System.out.println("How much would you like to deposit?");
+                            float updateDepositAmount = input.nextInt();
+                            input.nextLine();
+                            float FinalAmount = (updateDepositAmount + DepositAmount);
+                            System.out.println("Final Balance: " +FinalAmount);
+
+
+
+                }
+
+
+
+                }
+
+                break;
+
+
+            case 4:
                 System.exit(0);
                 break;
 
             default:
-            System.out.println("Invalid option. Please enter 1 or 2.");
+            System.out.println("Invalid option. Please enter 1, 2, 3 or 4.");
                 break;
         }
          //System.out.println("Your account number is " + Account.getAccountDetails(AccountNo));
@@ -159,6 +193,7 @@ public class Main {
                    OverdraftCheck=true;
                    System.exit(0);
                    break;
+
             }
         }while (OverdraftCheck == false);
 
