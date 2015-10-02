@@ -31,6 +31,7 @@ public class Main {
         switch (choice) {
             case 1:
                 do {
+                Repeat = false;
                 boolean FirstCheck = false;
                 do{
             System.out.print("Please enter First Name: ");
@@ -90,7 +91,7 @@ public class Main {
                 switch (DepositChoice){
                     case 1:
                         System.out.println("How much do you wish to deposit?: ");
-                        float DepositAmount = input.nextFloat() ;
+                        DepositAmount = input.nextFloat() ;
                         input.nextLine();
                         DepositCheck=false;
                         break;
@@ -125,12 +126,50 @@ public class Main {
 
             case 2:
             for(Account values : Accounts){
-                System.out.println("Account number: "+values.AccountNo+" First Name: "+values.FirstName+ "Surname: "+values.Surname+" Account:"+values.AccountT);
+                System.out.println("<"+values.AccountNo+"> ("+values.AccountT+ " account) <"+values.FirstName+"> <:"+values.Surname+">");
                 System.out.println();
             }
                 break;
 
             case 3:
+            boolean AccountNoCheck = false;
+            do {
+            System.out.println("Please enter your account number: ");
+            int AccountNo = input.nextInt();
+                input.nextLine();
+            if (AccountNo<=Accounts.size()){
+               System.out.print("Valid entry. Using account.");
+                for (int i=0; i>=Accounts.size(); i++){
+
+                }
+
+               AccountNoCheck=true;
+            }
+                else{
+                System.out.print("Invalid Entry.");
+             }
+            }while(AccountNoCheck==false);
+
+            System.out.println("Please select an option:");
+            System.out.println("1. Deposit");
+            System.out.println("2. Withdraw");
+             int DWChoice=input.nextInt();
+                input.nextLine();
+                switch (DWChoice){
+                    case 1:
+                        System.out.println("How much do you wish to deposit?");
+                        float DepInput=input.nextFloat();
+                        input.nextLine();
+                        float FinalAmount=DepositAmount+DepInput;
+                        Account.updateSavings(FinalAmount);
+                        System.out.println("Your balance is now:"+Account.getSavings(AccountNo));
+                        break;
+
+                    case 2:
+                        break;
+                }
+
+            case 4:
                 System.exit(0);
                 break;
 
@@ -168,5 +207,9 @@ public class Main {
     Accounts.add(UserAccount);
     }
 
-
+    public void updateSavings(float DepositAmount){
+    updateSavings(DepositAmount);
+    }
 }
+
+

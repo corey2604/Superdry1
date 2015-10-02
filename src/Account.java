@@ -12,7 +12,7 @@ public class Account {
     String FirstName;
     String Surname;
     AccountType AccountT;
-    float InitialSavings;
+    static float InitialSavings;
 
     public Account (int AccountNo, String FirstName,String Surname, AccountType AccountT){
         this.AccountNo=AccountNo;
@@ -30,6 +30,14 @@ public class Account {
 
     public static String getAccountDetails(int AccountNo, String FirstName, String Surname, AccountType AccountT, float InitialSavings){
         return AccountNo+" "+FirstName+" "+Surname+" "+AccountT+" "+InitialSavings;
+    }
+
+    public static void updateSavings(float Deposit){
+        InitialSavings=Deposit;
+    }
+
+    public static float getSavings (int AccountNo){
+        return InitialSavings;
     }
    /* public void getWithdrawal(int WithdrawalAmount) throws Exception
         if(Withdrawal>=) */
