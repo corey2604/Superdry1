@@ -147,7 +147,7 @@ public class Main {
                                             System.out.println("How much do you wish to deposit?");
                                             float DepInput=input.nextFloat();
                                             input.nextLine();
-                                            float FinalAmount=DepositAmount+DepInput;
+                                            float FinalAmount=i.Savings+DepInput;
                                             i.updateSavings(FinalAmount);
                                             System.out.println("Your balance is now:"+i.getSavings());
                                             break;
