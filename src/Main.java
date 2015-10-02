@@ -12,8 +12,10 @@ public class Main {
     static Boolean Repeat = false;
     static Boolean Tasks = false;
     static ArrayList <Account> Accounts = new ArrayList<Account>();
+    static float OverDraftLimit;
+    static boolean WithdrawCheck =false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AccountWithdrawalException {
         do{
             System.out.println("Please select either 1, 2, 3 or 4:");
             System.out.println("1. Create account");
@@ -56,18 +58,21 @@ public class Main {
                                     AccountText= AccountType.Standard;
                                     AccountCheck=true;
                                     System.out.println("Your overdraft amount is 500.");
+                                    OverDraftLimit=500.0f;
                                     System.out.println(AccountText);
                                     break;
                                 case 2:
                                     AccountText=AccountType.Saver;
                                     AccountCheck=true;
                                     System.out.println("Your overdraft amount is 0.");
+                                    OverDraftLimit=0.0f;
                                     System.out.println(AccountText);
                                     break;
                                 case 3:
                                     AccountText=AccountType.Premium;
                                     AccountCheck=true;
                                     System.out.println("Your overdraft amount is 3000.");
+                                    OverDraftLimit=3000f;
                                     System.out.println(AccountText);
                                     break;
                                 default:
@@ -147,14 +152,26 @@ public class Main {
                                             System.out.println("How much do you wish to deposit?");
                                             float DepInput=input.nextFloat();
                                             input.nextLine();
-                                            float FinalAmount=DepositAmount+DepInput;
+                                            float FinalAmount= i.addFunds(DepInput);
                                             i.updateSavings(FinalAmount);
                                             System.out.println("Your balance is now:"+i.getSavings());
                                             break;
                                         case 2:
+                                            do{
+                                            System.out.println("How much would you like to withdraw?: ");
+                                            float WithdrawalAmount = input.nextInt();
+                                            input.nextLine();
+                                            try {
+                                                i.withdraw(WithdrawalAmount);
+                                            }
+                                            catch (Exception AccountWithdrawalException){
+                                                System.out.println(AccountWithdrawalException.getMessage());
+                                        }
+                                            //OverdraftCheck=true;
+                                             } while (WithdrawCheck ==false);
                                             break;
-                                    }
                                 }
+                            }
                             }
 
                             AccountNoCheck=true;
@@ -175,31 +192,9 @@ public class Main {
             //System.out.println("Your account number is " + Account.getAccountDetails(AccountNo));
             System.out.println("Returning to initial options.");
         } while (Tasks==false);
-
-        boolean OverdraftCheck = false;
-        do{
-            System.out.println("Would you like to make an overdraft?");
-            System.out.println("1. Yes ");
-            System.out.println("2. No ");
-            int OverdraftChoice = input.nextInt();
-            input.nextLine();
-            switch(OverdraftChoice){
-                case 1:
-                    System.out.println("How much would you like to withdraw?: ");
-                    float OverdraftAmount = input.nextInt();
-                    OverdraftCheck=true;
-                    break;
-                case 2:
-                    OverdraftCheck=true;
-                    System.exit(0);
-                    break;
-
-            }
-        }while (OverdraftCheck == false);
-
-    }
+                  }
     public static void makeAccount(){
-        Account UserAccount = new Account(AccountNo, FirstName, LastName, AccountText, DepositAmount);
+        Account UserAccount = new Account(AccountNo, FirstName, LastName, AccountText, DepositAmount, OverDraftLimit);
         Accounts.add(UserAccount);
     }
 
