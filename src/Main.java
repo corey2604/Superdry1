@@ -1,9 +1,6 @@
-import com.sun.org.apache.xerces.internal.impl.xs.models.XSCMRepeatingLeaf;
 
-import javax.security.auth.login.AccountNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.*;
 public class Main {
 
     static String FirstName;
@@ -125,7 +122,7 @@ public class Main {
 
             case 2:
             for(Account values : Accounts){
-                System.out.println("Account number: " + values.AccountNo + "   " + "Account type: " + values.AccountT + "   " + "First name: " +values.FirstName + "   " + "Second name: " +values.Surname + " " + "Balance: " +values.InitialSavings);
+                System.out.println(values.AccountNo + "   " + "(" + values.AccountT + ")" + "-  " +values.FirstName + " "  +values.Surname + " - " + "£" +values.InitialSavings);
 
             }
                 break;
