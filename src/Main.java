@@ -90,7 +90,7 @@ public class Main {
                 switch (DepositChoice){
                     case 1:
                         System.out.println("How much do you wish to deposit?: ");
-                        float DepositAmount = input.nextFloat() ;
+                        DepositAmount = input.nextFloat() ;
                         input.nextLine();
                         DepositCheck=false;
                         break;
@@ -111,7 +111,7 @@ public class Main {
             input.nextLine();
             switch(repeatdec) {
                 case 1:
-                    Repeat=true;
+                    Repeat=false;
                     break;
                 case 2:
                     break;
@@ -125,9 +125,8 @@ public class Main {
 
             case 2:
             for(Account values : Accounts){
-                System.out.println("Account number: "+values.AccountNo);
-                System.out.println("");
-                System.out.println();
+                System.out.println("Account number: " + values.AccountNo + "   " + "Account type: " + values.AccountT + "   " + "First name: " +values.FirstName + "   " + "Second name: " +values.Surname + " " + "Balance: " +values.InitialSavings);
+
             }
                 break;
 
