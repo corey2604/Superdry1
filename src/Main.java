@@ -2,21 +2,22 @@ import java.util.Scanner;
 import java.util.ArrayList;
 public class Main {
 
-    static String FirstName;
-    static String LastName;
-    static AccountType AccountText;
-    static float DepositAmount;
-    static Boolean DepositEntered = false;
+    static String firstname;
+    static String lastname;
+    static AccountType accounttype;
+    static float depositamount;
     static Scanner input = new Scanner(System.in);
-    static int AccountNo = 0;
-    static Boolean Repeat = false;
-    static Boolean Tasks = false;
-    static ArrayList <Account> Accounts = new ArrayList<Account>();
-    static float OverDraftLimit;
-    static boolean WithdrawCheck =false;
+    static int accountno = 0;
+    static Boolean returntomainmenu = true;
+    static ArrayList <Account> accountsarray = new ArrayList<Account>();
+    static float overdraftlimit;
+    static boolean withdrawcheck =false;
 
     public static void main(String[] args) throws AccountWithdrawalException {
+        boolean accountNoCheck = false;
         do{
+        do{
+            System.out.println("MAIN MENU");
             System.out.println("Please select either 1, 2, 3 or 4:");
             System.out.println("1. Create account");
             System.out.println("2. List Accounts");
@@ -25,85 +26,95 @@ public class Main {
             System.out.println();
             int choice = input.nextInt();
             input.nextLine();
+            //repeats until a valid number choice is entered
             switch (choice) {
                 case 1:
+                    //ensures a firstname and lastname are entered before moving on
+                    boolean repeataccountentry = true;
                     do {
-                        Repeat = false;
-                        boolean FirstCheck = false;
+                        boolean firstnamecheck = false;
                         do{
                             System.out.print("Please enter First Name: ");
-                            FirstName = input.nextLine();
-                            if (FirstName.length()>0){
-                                FirstCheck=true;
+                            firstname = input.nextLine();
+                            if (firstname.length()>0){
+                                firstnamecheck=true;
                             }
-                        } while (FirstCheck==false);
-                        boolean LastCheck = false;
+                        } while (firstnamecheck==false);
+                        boolean lastnamecheck = false;
                         do{
                             System.out.print("Please enter Last Name: ");
-                            LastName = input.nextLine();
-                            if (LastName.length()>0){
-                                LastCheck=true;
+                            lastname = input.nextLine();
+                            if (lastname.length()>0){
+                                lastnamecheck=true;
                             }
-                        } while (LastCheck==false);
-                        boolean AccountCheck = false;
+                        } while (lastnamecheck==false);
+
+                        boolean accounttypecheck = false;
                         do{
-                            System.out.println("Please enter Account Type (1,2 or 3");
+                            System.out.println("Please enter Account Type (1,2 or 3)");
                             System.out.println("1. Standard");
                             System.out.println("2. Saver");
                             System.out.println("3. Premium");
                             int AccountT = input.nextInt();
                             input.nextLine();
                             switch (AccountT){
+                                //selects account type from enum and sets overdraftlimit
                                 case 1:
-                                    AccountText= AccountType.Standard;
-                                    AccountCheck=true;
+                                    accounttype= AccountType.Standard;
+                                    accounttypecheck=true;
                                     System.out.println("Your overdraft amount is 500.");
-                                    OverDraftLimit=500.0f;
-                                    System.out.println(AccountText);
+                                    overdraftlimit=500.0f;
+                                    System.out.println(accounttype);
                                     break;
                                 case 2:
-                                    AccountText=AccountType.Saver;
-                                    AccountCheck=true;
+                                    accounttype=AccountType.Saver;
+                                    accounttypecheck=true;
                                     System.out.println("Your overdraft amount is 0.");
-                                    OverDraftLimit=0.0f;
-                                    System.out.println(AccountText);
+                                    overdraftlimit=0.0f;
+                                    System.out.println(accounttype);
                                     break;
                                 case 3:
-                                    AccountText=AccountType.Premium;
-                                    AccountCheck=true;
+                                    accounttype=AccountType.Premium;
+                                    accounttypecheck=true;
                                     System.out.println("Your overdraft amount is 3000.");
-                                    OverDraftLimit=3000f;
-                                    System.out.println(AccountText);
+                                    overdraftlimit=3000f;
+                                    System.out.println(accounttype);
                                     break;
                                 default:
                                     System.out.println("Invalid option.");
                                     break;
                             }
-                        }  while (AccountCheck==false);
-                        boolean DepositCheck=false;
+                        }  while (accounttypecheck==false);
+
+                        boolean depositcheck=false;
                         do {
-                            AccountNo+=1;
+                            //increments so that accountno starts from 1 not 0
+                            accountno+=1;
                             System.out.println("Do you want to make an initial deposit: ");
                             System.out.println("1. Yes ");
                             System.out.println("2. No ");
                             int DepositChoice = input.nextInt();
                             input.nextLine();
+
                             switch (DepositChoice){
                                 case 1:
                                     System.out.println("How much do you wish to deposit?: ");
-                                    DepositAmount = input.nextFloat() ;
+                                    depositamount = input.nextFloat() ;
                                     input.nextLine();
-                                    DepositCheck=false;
+                                    depositcheck=false;
                                     break;
                                 case 2:
-                                    DepositAmount = 0;
-                                    DepositCheck=false;
+                                    //if no deposit is entered amount is set to 0
+                                    depositamount = 0;
+                                    depositcheck=false;
                                     break;
                                 default:
                                     System.out.println("Invalid choice.");
                                     break;
                             }
-                        }while (DepositCheck==true);
+                        }while (depositcheck==true);
+
+                        //makes account and allows user to either return to main menu or create new account
                         makeAccount();
                         System.out.println("Your account has been created.");
                         System.out.println("Would you like to create a new account?: ");
@@ -113,73 +124,77 @@ public class Main {
                         input.nextLine();
                         switch(repeatdec) {
                             case 1:
-                                Repeat=false;
                                 break;
                             case 2:
+                                repeataccountentry=false;
                                 break;
                             default:
                                 System.out.println("Invalid choice.");
                                 break;
-                        }
-                    } while (Repeat==true);
+                            }
+                       } while (repeataccountentry==true);
                     break;
 
 
                 case 2:
-                    for(Account values : Accounts){
+                    for(Account values : accountsarray){
                         System.out.println();
-                        System.out.println(values.AccountNo + "   " + "(" + values.AccountT + ")" + "-  " +values.FirstName + " "  +values.Surname + " - " + "£" +values.Savings);
+                        System.out.println(values.accountno + "   " + "(" + values.accounttype + ")" + "-  " +values.firstname + " "  +values.surname + " - " + "£" +values.savings);
                     }
                     break;
 
                 case 3:
-                    boolean AccountNoCheck = false;
-                    do {
+                    //Checks account no is valid; if not user is returned to main menu
                         System.out.println("Please enter your account number: ");
-                        int AccountNo = input.nextInt();
+                        int accountno = input.nextInt();
                         input.nextLine();
-                        if (AccountNo<=Accounts.size()){
+                        if (accountno<=accountsarray.size()){
                             System.out.print("Valid entry. Using account.");
-                            for (Account i : Accounts){
-                                if (i.AccountNo == AccountNo){
+                            //Checks each account systematically for matching accountno and uses matching account
+                            for (Account i : accountsarray){
+                                if (i.accountno == accountno){
                                     System.out.println("Please select an option:");
                                     System.out.println("1. Deposit");
                                     System.out.println("2. Withdraw");
-                                    int DWChoice=input.nextInt();
+                                    int depositwithdrawalhoice=input.nextInt();
                                     input.nextLine();
-                                    switch (DWChoice){
+                                    switch (depositwithdrawalhoice){
                                         case 1:
                                             System.out.println("How much do you wish to deposit?");
-                                            float DepInput=input.nextFloat();
+                                            float depositinput=input.nextFloat();
                                             input.nextLine();
-                                            float FinalAmount= i.addFunds(DepInput);
-                                            i.updateSavings(FinalAmount);
+                                            float finalamount= i.addFunds(depositinput);
+                                            i.updateSavings(finalamount);
                                             System.out.println("Your balance is now:"+i.getSavings());
                                             break;
                                         case 2:
                                             do{
                                             System.out.println("How much would you like to withdraw?: ");
-                                            float WithdrawalAmount = input.nextInt();
+                                            float withdrawalamount = input.nextInt();
                                             input.nextLine();
-                                            try {
-                                                i.withdraw(WithdrawalAmount);
-                                            }
-                                            catch (Exception AccountWithdrawalException){
-                                                System.out.println(AccountWithdrawalException.getMessage());
-                                        }
-                                            //OverdraftCheck=true;
-                                             } while (WithdrawCheck ==false);
+                                                //ensures withdrawal amount is £10000 or less
+                                                if (withdrawalamount >10000){
+                                                   System.out.println("Cannot withdraw more than £10,000 at once.");
+                                                }
+                                                else {
+                                                    try {
+                                                        i.withdraw(withdrawalamount);
+                                                    }
+                                                    catch (Exception AccountWithdrawalException){
+                                                        System.out.println(AccountWithdrawalException.getMessage());
+                                                    }
+                                                }
+                                             } while (withdrawcheck ==false);
                                             break;
                                 }
+                              }
                             }
-                            }
-
-                            AccountNoCheck=true;
+                          accountNoCheck=true;
                         }
                         else{
                             System.out.print("Invalid Entry.");
+                            break;
                         }
-                    }while(AccountNoCheck==false);
 
                 case 4:
                     System.exit(0);
@@ -189,19 +204,23 @@ public class Main {
                     System.out.println("Invalid option. Please enter 1, 2, 3 or 4.");
                     break;
             }
-            //System.out.println("Your account number is " + Account.getAccountDetails(AccountNo));
-            System.out.println("Returning to initial options.");
-        } while (Tasks==false);
-                  }
-    public static void makeAccount(){
-        Account UserAccount = new Account(AccountNo, FirstName, LastName, AccountText, DepositAmount, OverDraftLimit);
-        Accounts.add(UserAccount);
+            System.out.println("Returning to Main Menu.");
+
+            } while(accountNoCheck==false);
+        } while (returntomainmenu==true);
     }
 
-    public void updateSavings(float DepositAmount){
-        updateSavings(DepositAmount);
+    public static void makeAccount(){
+        Account user_account = new Account(accountno, firstname, lastname, accounttype, depositamount, overdraftlimit);
+        accountsarray.add(user_account);
     }
-}
+
+    public void updateSavings(float depositamount){
+        updateSavings(depositamount);
+    }
+
+   }
+
 
 
 
