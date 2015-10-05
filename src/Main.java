@@ -137,11 +137,8 @@ public class Main {
 
 
                 case 2:
-                    for(Account values : accountsarray){
-                        System.out.println();
-                        System.out.println(values.accountno + "   " + "(" + values.accounttype + ")" + "-  " +values.firstname + " "  +values.surname + " - " + "£" +values.savings);
-                    }
-                    break;
+                  DisplayAccounts();
+                  break;
 
                 case 3:
                     //Checks account no is valid; if not user is returned to main menu
@@ -178,7 +175,7 @@ public class Main {
                                                 }
                                                 else {
                                                     try {
-                                                        i.withdraw(withdrawalamount);
+                                                        System.out.println("Your funds are currently: "+i.withdraw(accounttype, withdrawalamount));
                                                     }
                                                     catch (Exception AccountWithdrawalException){
                                                         System.out.println(AccountWithdrawalException.getMessage());
@@ -217,6 +214,13 @@ public class Main {
 
     public void updateSavings(float depositamount){
         updateSavings(depositamount);
+    }
+
+    public static void DisplayAccounts() {
+        for(Account account : accountsarray){
+            System.out.println();
+            System.out.println(account.getDescription());
+        }
     }
 
    }
