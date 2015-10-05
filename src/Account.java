@@ -49,7 +49,7 @@ public class Account {
                 Main.withdrawcheck=true;
             }
             else {
-                savings=savings-withdrawalamount-1;
+                savings=savings-withdrawalamount;
                 System.out.println("Your funds are currently: "+savings);
                 Main.withdrawcheck=true;
             }
