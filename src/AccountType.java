@@ -5,10 +5,6 @@ public enum AccountType{
     private float overdraft;
     private float deductioncharge;
 
-    private AccountType(float overdraft){
-        this.overdraft = overdraft;
-    }
-
     private AccountType(float overdraft, float deductioncharge){
         this.overdraft = overdraft;
         this.deductioncharge = deductioncharge;

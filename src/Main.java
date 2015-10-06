@@ -181,6 +181,7 @@ public class Main {
                                                 else {
                                                     try {
                                                         System.out.println("Your funds are currently: "+i.withdraw(withdrawalamount));
+                                                        break;
                                                     }
                                                     catch (AccountWithdrawalException accountwithdrawalexception){
                                                         System.out.println(accountwithdrawalexception.getMessage());
