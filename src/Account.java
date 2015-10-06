@@ -30,11 +30,23 @@ public class Account {
        return savings;
     }
 
-    public float addFunds(float depositinput) {
+    public float addFunds(float depositinput) throws NegativeDepositException, AccountDepositException {
+        if (depositinput >= 0){
         return savings+depositinput;
+        }
+        else if (depositinput < 0){
+            throw new NegativeDepositException("Can't deposit a negative number.");
+        }
+        else {
+            throw new AccountDepositException("Invalid entry.");
+        }
     }
 
-    public float withdraw(float withdrawalamount) throws AccountWithdrawalException{
+    public float withdraw(float withdrawalamount) throws AccountWithdrawalException, NegativeWithdrawalException{
+        if (withdrawalamount<0){
+            throw new NegativeWithdrawalException("Cannot withdraw a negative amount.");
+        }
+        else {
         if(withdrawalamount<=(savings+overdraftlimit)){
            System.out.println("Funds removed.");
             //Removes an additional £1 if the account is a saver account
@@ -55,6 +67,7 @@ public class Account {
                  }
         }
         else throw new AccountWithdrawalException("Insufficient funds");
+        }
     }
 
     public String getDescription(){

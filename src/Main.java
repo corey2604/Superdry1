@@ -13,17 +13,19 @@ public class Main {
     static float overdraftlimit;
     static boolean withdrawcheck =false;
 
-    public static void main(String[] args) throws AccountWithdrawalException {
+    public static void main(String[] args) throws AccountWithdrawalException, NegativeDepositException, AccountDepositException {
         boolean accountNoCheck = false;
         do{
         do{
-            System.out.println("MAIN MENU");
+            System.out.println("------------------------------");
+            System.out.println("\t\tMAIN MENU");
+            System.out.println("------------------------------");
             System.out.println("Please select either 1, 2, 3 or 4:");
             System.out.println("1. Create account");
             System.out.println("2. List Accounts");
             System.out.println("3. Deposit/Withdraw");
             System.out.println("4. Exit");
-            System.out.println();
+            System.out.println("------------------------------");
             int choice = input.nextInt();
             input.nextLine();
             //repeats until a valid number choice is entered
@@ -77,8 +79,7 @@ public class Main {
                                     accounttype=AccountType.Premium;
                                     accounttypecheck=true;
                                     overdraftlimit=accounttype.getoverdraftlimit();
-                                    System.out.println("Your overdraft amount is "+overdraftlimit);
-                                    System.out.println(accounttype);
+                                    System.out.println("Your overdraft limit is "+overdraftlimit);
                                     break;
                                 default:
                                     System.out.println("Invalid option.");
@@ -119,11 +120,14 @@ public class Main {
                         System.out.println("Your account has been created.");
                         boolean validaccountchoice = false;
                         do{
+                        System.out.println("-----------------------------------------");
                         System.out.println("Would you like to create a new account?: ");
+                        System.out.println("-----------------------------------------");
                         System.out.println("1. Yes");
                         System.out.println("2. No");
                         int repeatdec = input.nextInt();
                         input.nextLine();
+                        System.out.println("-----------------------------------------");
                         switch(repeatdec) {
                             case 1:
                                 validaccountchoice = true;
@@ -142,7 +146,10 @@ public class Main {
 
 
                 case 2:
+                  System.out.println("-----------------------------------------");
+                  System.out.println("VIEWING ACCOUNTS...");
                   DisplayAccounts();
+                  System.out.println("-----------------------------------------");
                   break;
 
                 case 3:
@@ -162,13 +169,22 @@ public class Main {
                                     input.nextLine();
                                     switch (depositwithdrawalhoice){
                                         case 1:
+                                            boolean depositcheck = false;
+                                            do{
                                             System.out.println("How much do you wish to deposit?");
                                             float depositinput=input.nextFloat();
                                             input.nextLine();
+                                            try {
                                             float finalamount= i.addFunds(depositinput);
                                             i.updateSavings(finalamount);
                                             System.out.println("Your balance is now:"+i.getSavings());
+                                            depositcheck = true;
                                             break;
+                                            }
+                                            catch (AccountDepositException accountdepositexception) {
+                                            System.out.println(accountdepositexception.getMessage());
+                                            }
+                                            } while (depositcheck == false);
                                         case 2:
                                             do{
                                             System.out.println("How much would you like to withdraw?: ");
@@ -185,6 +201,9 @@ public class Main {
                                                     }
                                                     catch (AccountWithdrawalException accountwithdrawalexception){
                                                         System.out.println(accountwithdrawalexception.getMessage());
+                                                    }
+                                                    catch (NegativeWithdrawalException negativewithdrawalexception){
+                                                        System.out.println(negativewithdrawalexception.getMessage());
                                                     }
                                                 }
                                              } while (withdrawcheck ==false);
@@ -207,7 +226,9 @@ public class Main {
                     System.out.println("Invalid option. Please enter 1, 2, 3 or 4.");
                     break;
             }
-            System.out.println("Returning to Main Menu.");
+            System.out.println("------------------------------");
+            System.out.println("Returning to Main Menu...");
+            System.out.println("------------------------------");
 
             } while(accountNoCheck==false);
         } while (returntomainmenu==true);
@@ -224,7 +245,6 @@ public class Main {
 
     public static void DisplayAccounts() {
         for(Account account : accountsarray){
-            System.out.println();
             System.out.println(account.getDescription());
         }
     }

@@ -17,10 +17,15 @@ public class BankTests {
     }
 
     @Test
-    public void addFunds_DepositAddedtoSavings(){
+    public void addFunds_DepositAddedtoSavings() throws NegativeDepositException, AccountDepositException{
         AccountType accounttype = AccountType.Standard;
         Account a = new Account(1, "John", "Smith", AccountType.Standard, 500, accounttype.getoverdraftlimit());
+        try{
         Assert.assertEquals(800f, a.addFunds(300f), 0);
+        }
+        catch(NegativeDepositException negativedepositexception){
+            Assert.fail("Shouldn't have got this far.");
+        }
     }
 
     @Test
@@ -163,6 +168,9 @@ public class BankTests {
         }
         catch (AccountWithdrawalException accountWithdrawalException){
             Assert.assertEquals("Insufficient funds", accountWithdrawalException.getMessage());
+        }
+        catch (NegativeWithdrawalException negativewithdrawalexception){
+            Assert.fail("Shouldn't get this far.");
         }
     }
 
