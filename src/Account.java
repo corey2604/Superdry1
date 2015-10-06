@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Account {
-        int accountno;
+    int accountno;
     String firstname;
     String surname;
     AccountType accounttype;
@@ -34,15 +34,16 @@ public class Account {
         return savings+depositinput;
     }
 
-    public float withdraw(AccountType accounttype,float withdrawalamount) throws Exception{
+    public float withdraw(AccountType accounttype,float withdrawalamount) throws AccountWithdrawalException{
         if(withdrawalamount<=(savings+overdraftlimit)){
            System.out.println("Funds removed.");
             //Removes an additional £1 if the account is a saver account
             if(accounttype==AccountType.Saver){
-                if(withdrawalamount<=(savings+overdraftlimit-1)){
+                float savingdeduction = 1.00f;
+                if(withdrawalamount<=(savings+overdraftlimit-savingdeduction)){
                 Main.withdrawcheck=true;
-                System.out.println("Account is a saver account. £1 deducted.");
-                savings=savings-withdrawalamount-1;
+                System.out.println("Account is a saver account. £"+savingdeduction+" deducted.");
+                savings=savings-withdrawalamount-savingdeduction;
                 return savings;
                 }
                 else throw new AccountWithdrawalException("Insufficient funds");
@@ -59,6 +60,8 @@ public class Account {
     public String getDescription(){
        return (this.accountno + " " + "(" + this.accounttype + ")" + "- " +this.firstname + " "  +this.surname + " - " + "£" +this.savings);
     }
+
+
 
     }
 

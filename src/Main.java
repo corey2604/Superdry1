@@ -62,22 +62,22 @@ public class Main {
                                 case 1:
                                     accounttype= AccountType.Standard;
                                     accounttypecheck=true;
-                                    System.out.println("Your overdraft amount is 500.");
-                                    overdraftlimit=500.0f;
+                                    overdraftlimit=accounttype.getoverdraftlimit();
+                                    System.out.println("Your overdraft amount is "+overdraftlimit);
                                     System.out.println(accounttype);
                                     break;
                                 case 2:
                                     accounttype=AccountType.Saver;
                                     accounttypecheck=true;
-                                    System.out.println("Your overdraft amount is 0.");
-                                    overdraftlimit=0.0f;
+                                    overdraftlimit=accounttype.getoverdraftlimit();
+                                    System.out.println("Your overdraft amount is "+overdraftlimit);
                                     System.out.println(accounttype);
                                     break;
                                 case 3:
                                     accounttype=AccountType.Premium;
                                     accounttypecheck=true;
-                                    System.out.println("Your overdraft amount is 3000.");
-                                    overdraftlimit=3000f;
+                                    overdraftlimit=accounttype.getoverdraftlimit();
+                                    System.out.println("Your overdraft amount is "+overdraftlimit);
                                     System.out.println(accounttype);
                                     break;
                                 default:
@@ -177,8 +177,8 @@ public class Main {
                                                     try {
                                                         System.out.println("Your funds are currently: "+i.withdraw(accounttype, withdrawalamount));
                                                     }
-                                                    catch (Exception AccountWithdrawalException){
-                                                        System.out.println(AccountWithdrawalException.getMessage());
+                                                    catch (AccountWithdrawalException accountwithdrawalexception){
+                                                        System.out.println(accountwithdrawalexception.getMessage());
                                                     }
                                                 }
                                              } while (withdrawcheck ==false);

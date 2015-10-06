@@ -1,5 +1,15 @@
 public enum AccountType{
-        Standard,
-        Saver,
-        Premium
+        Standard(500f),
+        Saver(0f),
+        Premium(3000f);
+    private float overdraft;
+
+    private AccountType(float overdraft){
+        this.overdraft = overdraft;
+    }
+         public float  getoverdraftlimit(){
+             return overdraft;
+         }
+
 }
+

@@ -157,8 +157,8 @@ public class BankTests {
             a.withdraw(accounttype,withdrawalamount);
             Assert.fail("This exceeds the overdraft limit.");
         }
-        catch (Exception AccountWithdrawalException){
-            Assert.assertEquals("Insufficient funds", AccountWithdrawalException.getMessage());
+        catch (AccountWithdrawalException accountWithdrawalException){
+            Assert.assertEquals("Insufficient funds", accountWithdrawalException.getMessage());
         }
     }
 
