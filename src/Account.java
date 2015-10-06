@@ -34,12 +34,12 @@ public class Account {
         return savings+depositinput;
     }
 
-    public float withdraw(AccountType accounttype,float withdrawalamount) throws AccountWithdrawalException{
+    public float withdraw(float withdrawalamount) throws AccountWithdrawalException{
         if(withdrawalamount<=(savings+overdraftlimit)){
            System.out.println("Funds removed.");
             //Removes an additional £1 if the account is a saver account
             if(accounttype==AccountType.Saver){
-                float savingdeduction = 1.00f;
+                float savingdeduction = accounttype.getdeductioncharge();
                 if(withdrawalamount<=(savings+overdraftlimit-savingdeduction)){
                 Main.withdrawcheck=true;
                 System.out.println("Account is a saver account. £"+savingdeduction+" deducted.");

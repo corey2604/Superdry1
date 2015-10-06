@@ -117,6 +117,8 @@ public class Main {
                         //makes account and allows user to either return to main menu or create new account
                         makeAccount();
                         System.out.println("Your account has been created.");
+                        boolean validaccountchoice = false;
+                        do{
                         System.out.println("Would you like to create a new account?: ");
                         System.out.println("1. Yes");
                         System.out.println("2. No");
@@ -124,15 +126,18 @@ public class Main {
                         input.nextLine();
                         switch(repeatdec) {
                             case 1:
+                                validaccountchoice = true;
                                 break;
                             case 2:
                                 repeataccountentry=false;
+                                validaccountchoice = true;
                                 break;
                             default:
                                 System.out.println("Invalid choice.");
                                 break;
                             }
-                       } while (repeataccountentry==true);
+                        }while (validaccountchoice==false);
+                       }while (repeataccountentry==true);
                     break;
 
 
@@ -175,7 +180,7 @@ public class Main {
                                                 }
                                                 else {
                                                     try {
-                                                        System.out.println("Your funds are currently: "+i.withdraw(accounttype, withdrawalamount));
+                                                        System.out.println("Your funds are currently: "+i.withdraw(withdrawalamount));
                                                     }
                                                     catch (AccountWithdrawalException accountwithdrawalexception){
                                                         System.out.println(accountwithdrawalexception.getMessage());

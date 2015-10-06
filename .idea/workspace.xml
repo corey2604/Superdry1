@@ -10,12 +10,12 @@
     <ignored path="BankExercise.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444119821702" ignored="false" />
-    <file path="/Main.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444120169334" ignored="false" />
-    <file path="/Account.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444058313168" ignored="false" />
-    <file path="/AccountType.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444119571836" ignored="false" />
+    <file path="/Main.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444123990550" ignored="false" />
+    <file path="/Account.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444123608407" ignored="false" />
+    <file path="/AccountType.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444122496921" ignored="false" />
     <file path="/AccountWIthdrawalException.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1443785498057" ignored="false" />
     <file path="/AccountWithdrawalException.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1443794322866" ignored="false" />
-    <file path="/BankTests.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444058487275" ignored="false" />
+    <file path="/BankTests.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444122610511" ignored="false" />
     <file path="/fragment.java" changelist="882c9dec-393e-49f4-9f10-e1e787a89792" time="1444119859732" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +78,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="18" selection-start="3330" selection-end="3330" vertical-scroll-proportion="0.778157">
+            <state line="133" column="97" selection-start="6811" selection-end="6811" vertical-scroll-proportion="6.8088737">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#385#394#0" expanded="true" />
@@ -90,7 +90,7 @@
       <file leaf-file-name="BankTests.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BankTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="9" selection-start="6441" selection-end="6441" vertical-scroll-proportion="0.0">
+            <state line="157" column="0" selection-start="6465" selection-end="6465" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,7 +101,7 @@
       <file leaf-file-name="Account.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="41" selection-start="1826" selection-end="1826" vertical-scroll-proportion="0.0">
+            <state line="36" column="32" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#246#255#0" expanded="true" />
               </folding>
@@ -112,7 +112,7 @@
       <file leaf-file-name="AccountWithdrawalException.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AccountWithdrawalException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="5" column="27" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,7 +121,7 @@
       <file leaf-file-name="AccountType.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AccountType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="17" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0">
+            <state line="13" column="42" selection-start="356" selection-end="391" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -147,9 +147,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/AccountWIthdrawalException.java" />
         <option value="$PROJECT_DIR$/src/AccountWithdrawalException.java" />
+        <option value="$PROJECT_DIR$/src/AccountType.java" />
         <option value="$PROJECT_DIR$/src/Account.java" />
         <option value="$PROJECT_DIR$/src/BankTests.java" />
-        <option value="$PROJECT_DIR$/src/AccountType.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
@@ -603,16 +603,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AccountWithdrawalException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="41" selection-start="1826" selection-end="1826" vertical-scroll-proportion="0.0">
+        <state line="36" column="32" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#246#255#0" expanded="true" />
           </folding>
@@ -621,23 +614,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BankTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="9" selection-start="6441" selection-end="6441" vertical-scroll-proportion="0.0">
+        <state line="157" column="0" selection-start="6465" selection-end="6465" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AccountWithdrawalException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="27" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AccountType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="17" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0">
+        <state line="13" column="42" selection-start="356" selection-end="391" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="18" selection-start="3330" selection-end="3330" vertical-scroll-proportion="0.778157">
+        <state line="133" column="97" selection-start="6811" selection-end="6811" vertical-scroll-proportion="6.8088737">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#385#394#0" expanded="true" />
