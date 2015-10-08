@@ -236,6 +236,8 @@ public class Main {
 
     public static void makeAccount(){
         Account user_account = new Account(accountno, firstname, lastname, accounttype, depositamount, overdraftlimit);
+        SQLConnector sqlupdate = new SQLConnector();
+        sqlupdate.createAccount(user_account);
         accountsarray.add(user_account);
     }
 
@@ -249,7 +251,8 @@ public class Main {
         }
     }
 
-   }
+
+      }
 
 
 

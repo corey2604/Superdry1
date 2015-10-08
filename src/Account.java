@@ -22,12 +22,34 @@ public class Account {
         return accountno+" "+firstname+" "+surname+" "+accounttype+" "+savings;
     }
 
+    public String getFirstname(){
+        return firstname;
+    }
+
+    public String getSurname(){
+        return surname;
+    }
+
+    public String getAccounttype(){
+       String accounttypeString = accounttype.toString();
+        return accounttypeString;
+    }
+
+    public float getOverdraftlimit(){
+        return (overdraftlimit);
+    }
+
     public void updateSavings(float finalamount){
         savings=finalamount;
     }
 
     public float getSavings (){
        return savings;
+    }
+
+    public float getDeductionCharge(){
+        float deductioncharge = accounttype.getdeductioncharge();
+        return deductioncharge;
     }
 
     public float addFunds(float depositinput) throws NegativeDepositException, AccountDepositException {
